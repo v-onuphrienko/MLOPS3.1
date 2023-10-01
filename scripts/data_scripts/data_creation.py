@@ -39,7 +39,7 @@ def init_data(name, size, with_noize=False):
 
     add_mark(data)
 
-    save_data(data, "~/git/mlops_3sem_1/data/raw", name)
+    save_data(data, "~/project/MLOPS3.1/data/raw", name)
 
 
 # Учебные данные
