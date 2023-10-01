@@ -20,5 +20,15 @@ stages:
     - scripts/model_scripts/model_preparation.py
     params:
     - train.seed
+    - train.iters
     outs:
     - models/model.pkl
+  evaluate:
+    cmd: python3 scripts/model_scripts/evaluate.py data/prepared/test.csv models/model.pkl
+    deps:
+    - data/prepared/test.csv
+    - models/model.pkl
+    - scripts/model_scripts/evaluate.py
+    metrics:
+    - evaluate.json:
+        cache: false
