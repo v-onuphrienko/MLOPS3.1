@@ -13,3 +13,12 @@ stages:
     - scripts/feature_engineering/data_preprocessing.py
     outs:
     - data/prepared
+  train:
+    cmd: python3 scripts/model_scripts/model_preparation.py data/prepared/train.csv model.pkl
+    deps:
+    - data/prepared/train.csv
+    - scripts/model_scripts/model_preparation.py
+    params:
+    - train.seed
+    outs:
+    - models/model.pkl
