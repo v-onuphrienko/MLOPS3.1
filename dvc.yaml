@@ -1,0 +1,15 @@
+stages:
+  get-features:
+    cmd: python3 scripts/feature_engineering/get_features.py data/raw/
+    deps:
+    - data/raw/
+    - scripts/feature_engineering/get_features.py
+    outs:
+    - data/features
+  data-prep:
+    cmd: python3 scripts/feature_engineering/data_preprocessing.py data/features/
+    deps:
+    - data/features/
+    - scripts/feature_engineering/data_preprocessing.py
+    outs:
+    - data/prepared

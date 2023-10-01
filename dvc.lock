@@ -1,0 +1,38 @@
+schema: '2.0'
+stages:
+  get-features:
+    cmd: python3 scripts/feature_engineering/get_features.py data/raw/
+    deps:
+    - path: data/raw/
+      hash: md5
+      md5: c4dba175372263e2720ede358ade07ae.dir
+      size: 200315
+      nfiles: 5
+    - path: scripts/feature_engineering/get_features.py
+      hash: md5
+      md5: 5c521002c7983984850649f2d7e85b43
+      size: 687
+    outs:
+    - path: data/features
+      hash: md5
+      md5: 419321194b3390e47847acab161267c2.dir
+      size: 198872
+      nfiles: 2
+  data-prep:
+    cmd: python3 scripts/feature_engineering/data_preprocessing.py data/features/
+    deps:
+    - path: data/features/
+      hash: md5
+      md5: 419321194b3390e47847acab161267c2.dir
+      size: 198872
+      nfiles: 2
+    - path: scripts/feature_engineering/data_preprocessing.py
+      hash: md5
+      md5: 5c8f71c6dce23770054c9b6e2292e82f
+      size: 1812
+    outs:
+    - path: data/prepared
+      hash: md5
+      md5: cb92b83c88d75089240a29c6431daa4a.dir
+      size: 213256
+      nfiles: 2
